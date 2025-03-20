@@ -42,3 +42,12 @@ var isValidSudoku = function (board) {
 
 // Time: O(n^2)
 // Space: O(n^2)
+
+/**
+- row = Math.floor(square / 3) * 3 + i
+  - Determines which 3-row block the current subgrid belongs to.
+  - Math.floor(square / 3) * 3 gives the starting row index of the subgrid.
+- col = (square % 3) * 3 + j
+  - Determines which 3-column block the current subgrid belongs to.
+  - (square % 3) * 3 gives the starting column index of the subgrid.
+ */
