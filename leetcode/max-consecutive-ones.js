@@ -16,3 +16,18 @@ var findMaxConsecutiveOnes = function (nums) {
 
 // Time: O(n)
 // Space: O(1)
+
+// Alternate
+var findMaxConsecutiveOnes = function (nums) {
+  let max = 0,
+    count = 0;
+  for (const num of nums) {
+    if (num === 1) count++;
+    else if (num === 0) count = 0;
+    max = Math.max(max, count);
+  }
+  return max;
+};
+
+// Time: O(n)
+// Space: O(1)

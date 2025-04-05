@@ -26,3 +26,31 @@ var search = function (nums, target) {
 
 // Time: O(logn)
 // Space: O(1)
+
+var search = function (nums, target) {
+  let l = 0,
+    r = nums.length - 1;
+  while (l <= r) {
+    const mid = l + Math.floor((r - l) / 2);
+    if (nums[mid] === target) return mid;
+    // left half sorted
+    if (nums[l] <= nums[mid]) {
+      if (target >= nums[l] && target < nums[mid]) {
+        r = mid - 1;
+      } else {
+        l = mid + 1;
+      }
+      // right half sorted
+    } else {
+      if (target > nums[mid] && target <= nums[r]) {
+        l = mid + 1;
+      } else {
+        r = mid - 1;
+      }
+    }
+  }
+  return -1;
+};
+
+// Time: O(logn)
+// Space: O(1)

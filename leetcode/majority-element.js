@@ -39,3 +39,22 @@ var majorityElement = function (nums) {
 
 // Time: O(n)
 // Space: O(1)
+
+// Hash map 2
+var majorityElement = function (nums) {
+  const map = {};
+  let mostFreq = nums[0],
+    freq = 1;
+  for (let i = 0; i < nums.length; i++) {
+    const num = nums[i];
+    map[num] = (map[num] || 0) + 1;
+    if (map[num] > freq) {
+      mostFreq = num;
+      freq = map[num];
+    }
+  }
+  return mostFreq;
+};
+
+// Time: O(n)
+// Space: O(n)
