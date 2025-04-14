@@ -1,16 +1,36 @@
+// Recursive
 var inorderTraversal = function (root) {
   const res = [];
-
-  function dfs(node) {
+  if (!root) return res;
+  function t(node) {
     if (!node) return null;
-    dfs(node.left);
+    t(node.left);
     res.push(node.val);
-    dfs(node.right);
+    t(node.right);
   }
+  t(root);
+  return res;
+};
 
-  dfs(root);
+// Iterative
+var inorderTraversal = function (root) {
+  const res = [];
+  const stack = [];
+  let curr = root;
+  while (curr || stack.length) {
+    // go left as possible
+    while (curr) {
+      stack.push(curr);
+      curr = curr.left;
+    }
+    // pop and process
+    curr = stack.pop();
+    res.push(curr.val);
+    // then go right
+    curr = curr.right;
+  }
   return res;
 };
 
 // Time: O(n)
-// Space: O(n)
+// Space: O(h) logn for balanced, n for skewed
