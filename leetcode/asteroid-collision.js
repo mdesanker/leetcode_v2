@@ -31,3 +31,29 @@ var asteroidCollision = function (asteroids) {
 
 // Time: O(n)
 // Space: O(1)
+
+var asteroidCollision = function (asteroids) {
+  const stack = [];
+  for (const asteroid of asteroids) {
+    if (asteroid > 0) stack.push(asteroid);
+    else {
+      // need to check stack[stack.length - 1] > 0 because we are handling negative asteroids
+      while (
+        stack.length > 0 &&
+        stack[stack.length - 1] > 0 &&
+        stack[stack.length - 1] < -asteroid
+      )
+        stack.pop();
+
+      if (stack.length > 0 && -asteroid === stack[stack.length - 1])
+        stack.pop();
+      else if (stack.length > 0 && -asteroid < stack[stack.length - 1])
+        continue;
+      else stack.push(asteroid);
+    }
+  }
+  return stack;
+};
+
+// TC: O(n)
+// SC: O(1)
