@@ -11,5 +11,5 @@ var merge = function (intervals) {
   return res;
 };
 
-// Time: O(n)
-// Space: O(1)
+// Time: O(nlogn) for sort
+// Space: O(n) for sort
