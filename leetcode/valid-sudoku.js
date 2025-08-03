@@ -44,10 +44,32 @@ var isValidSudoku = function (board) {
 // Space: O(n^2)
 
 /**
-- row = Math.floor(square / 3) * 3 + i
-  - Determines which 3-row block the current subgrid belongs to.
-  - Math.floor(square / 3) * 3 gives the starting row index of the subgrid.
-- col = (square % 3) * 3 + j
-  - Determines which 3-column block the current subgrid belongs to.
-  - (square % 3) * 3 gives the starting column index of the subgrid.
+Boxes are arranged like so
+[0] [1] [2]
+[3] [4] [5]
+[6] [7] [8]
+for (let i = 0; i < 9; i++) iterates through box index 0 - 8
+
+Finding the top left of each box
+Base row
+Row 0: [0] [1] [2] -> Math.floor(i / 3) = 0 -> Starts in row 0
+Row 1: [3] [4] [5] -> Math.floor(i / 3) = 1 -> Starts in row 3
+Row 2: [6] [7] [8] -> Math.floor(i / 3) = 2 -> Starts in row 6
+
+Base col
+Col 0: [0] [3] [6] -> (i % 3) = 0 -> Starts in col 0
+Col 1: [1] [4] [7] -> (i % 3) = 1 -> Starts in col 3
+Col 2: [2] [5] [8] -> (i % 3) = 2 -> Starts in col 6
+
+r and c to loop within 3x3 box
+for (let r = 0; r < 3; r++) {
+  for (let c = 0; c < 3; c++) {
+    const row = baseRow + r;
+    const col = baseCol + c;
+  }
+}
+
+Summary:
+const row = Math.floor(i / 3) * 3 + r
+const col = (i % 3) * 3 + c
  */

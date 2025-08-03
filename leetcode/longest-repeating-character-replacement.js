@@ -22,3 +22,9 @@ var characterReplacement = function (s, k) {
 
 // Time: O(n)
 // Space: O(n)
+
+/**
+ * mostFreq doesn’t need to be decremented because we only care whether the current window can be transformed using at most k changes,
+ * not the exact frequency at every step. Even if mostFreq is outdated,
+ * the window will shrink until the condition r - l + 1 - mostFreq <= k is satisfied again, ensuring correctness.
+ */
