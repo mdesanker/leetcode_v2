@@ -55,3 +55,24 @@ var sortList = function (head) {
 
 // TC: O(n logn)
 // SC: O(n)
+
+// In place edit - heap
+var sortList = function (head) {
+  if (!head || !head.next) return head;
+
+  const minHeap = new MinPriorityQueue();
+  let curr = head;
+  while (curr) {
+    minHeap.enqueue(curr.val);
+    curr = curr.next;
+  }
+
+  curr = head;
+  while (curr) {
+    curr.val = minHeap.dequeue();
+    curr = curr.next;
+  }
+  return head;
+};
+// TC: O(nlogn)
+// SC: O(n)
