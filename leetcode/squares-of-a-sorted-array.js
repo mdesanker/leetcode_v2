@@ -28,3 +28,5 @@ var sortedSquares = function (nums) {
 };
 // TC: O(n)
 // SC: O(1)
+
+// Two pointer approach works because the input array is sorted. We know the largest squared value will either be at the beginning or end of the array
